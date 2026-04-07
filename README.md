@@ -9,7 +9,7 @@ This project is an IoT-based smart home security system built using ESP32 that e
 - 🔐 Remote door locking/unlocking using servo motor  
 - 📹 Live video streaming using ESP32-CAM  
 - 🚨 Real-time intrusion detection with buzzer alerts  
-- 📡 Multi-sensor fusion (PIR + Ultrasonic + IR) for accuracy  
+- 📡 Multi-sensor fusion (PIR + Ultrasonic ) for accuracy  
 - 📲 Mobile/Web dashboard for monitoring and control  
 - 🔔 Instant alerts for suspicious activity  
 - 🧠 Smart detection logic to reduce false alarms  
@@ -23,8 +23,6 @@ This project is an IoT-based smart home security system built using ESP32 that e
 - IR Sensor  
 - Servo Motor  
 - Buzzer  
-- Relay Module  
-- Temperature Sensor  
 
 ---
 
@@ -37,8 +35,7 @@ ESP32 Sensors → MQTT Broker → Go Backend → Database → WebSocket → Dash
 ## ⚙️ Tech Stack
 - Embedded Systems: ESP32 (Arduino Framework)  
 - Communication: MQTT Protocol  
-- Backend: Go (Golang)  
-- Database: PostgreSQL / Time-series DB  
+- Backend: Go (Golang)   
 - Frontend: Web/Mobile Dashboard (e.g., Flutter)  
 
 ---
@@ -63,9 +60,7 @@ ESP32 Sensors → MQTT Broker → Go Backend → Database → WebSocket → Dash
 ---
 
 ## 📸 Future Improvements
-- Face recognition for automatic access  
 - Cloud storage for video logs  
-- Mobile app integration  
 - AI-based anomaly detection  
 
 ---
