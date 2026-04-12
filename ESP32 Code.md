@@ -60,7 +60,6 @@ Sensors publish events to the backend; the backend sends commands back to contro
 | PIR Sensor | HC-SR501 | Motion detection |
 | Vibration Sensor | 801S | Intrusion/knock detection |
 | Ultrasonic Sensor | HC-SR04 | Distance / proximity detection |
-| Hall Effect Sensor | Generic | Magnetic field detection *(reserved)* |
 | Magnetic Reed Switch | Generic | Door open/closed state |
 | Servo Motor | SG90 | Door locking mechanism |
 | Status LED | Built-in (GPIO 2) | Visual indicator |
@@ -75,7 +74,6 @@ Sensors publish events to the backend; the backend sends commands back to contro
 | 14 | Vibration sensor | Active HIGH |
 | 5 | Ultrasonic TRIG | Output |
 | 18 | Ultrasonic ECHO | Input |
-| 25 | Hall effect sensor | Reserved – not wired in current circuit |
 | 32 | Magnetic reed switch | `INPUT_PULLUP`; HIGH = door open |
 | 4 | Servo motor (PWM) | SG90 via ESP32Servo |
 | 2 | Status LED | Built-in LED |
@@ -126,7 +124,6 @@ All configuration lives in `config.h`. Edit this file before flashing:
 | `home/door/vibration` | `INTRUSION` | Vibration/knock event |
 | `home/door/proximity` | `DETECTED` | Object closer than 10 cm |
 | `home/door/ultrasonic` | `"85.5"` (float string) | Raw distance reading in cm |
-| `home/door/hall` | `DETECTED` | Hall sensor event *(disabled in code)* |
 | `home/door/magnetic/open` | *(empty)* | Door transitioned to OPEN |
 | `home/door/magnetic/closed` | *(empty)* | Door transitioned to CLOSED |
 | `home/door/motor` | `"55"` (int string) | Servo position in degrees |
@@ -198,9 +195,6 @@ Returns `-1.0` on timeout (no object in range within ~500 cm).
 ### Magnetic Reed Switch
 **Edge-triggered only** — publishes to either `magnetic/open` or `magnetic/closed` only when state changes. Initial state published on boot.
 
-### Hall Effect Sensor
-GPIO and debounce logic is present in `config.h` but the publishing call in `main.cpp` is commented out. Reserved for future use.
-
 ---
 
 ## Actuator Behaviour
@@ -226,7 +220,6 @@ Moves smoothly in 1° increments with a 15 ms delay per step. Motor position is 
 | `DEBOUNCE_PIR` | 3000 ms | Min interval between PIR publishes |
 | `DEBOUNCE_VIBRATION` | 3000 ms | Min interval between vibration publishes |
 | `DEBOUNCE_PROXIMITY` | 5000 ms | Min interval between proximity publishes |
-| `DEBOUNCE_HALL` | 3000 ms | Min interval between Hall publishes |
 | `ULTRASONIC_INTERVAL` | 2000 ms | Ultrasonic read frequency |
 | `MOTOR_READ_INTERVAL` | 10000 ms | Servo position read frequency |
 | `LED_FLASH_DURATION` | 3000 ms | LED on-time for proximity alert |
